@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use Inertia\Response;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
+
+
 
 class CarController extends Controller
 {
@@ -14,7 +16,7 @@ class CarController extends Controller
      */
     public function index(): Response 
     {
-        return Inertia::render('Chirps/Index', [
+        return Inertia::render('Cars/Index', [
         ]);
     }
 

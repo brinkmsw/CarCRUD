@@ -14,7 +14,7 @@ class ManufacturerController extends Controller
      */
     public function index(): Response 
     {
-        return Inertia::render('Chirps/Index', [
+        return Inertia::render('Manufacturers/Index', [
         ]);
     }
 
