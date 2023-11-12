@@ -1,9 +1,13 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import Manufacturer from '@/Components/Manufacturer.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm, Head } from '@inertiajs/vue3';
  
+defineProps(['manufacturers']);
+
+
 const form = useForm({
     message: '',
 });
@@ -23,6 +27,15 @@ const form = useForm({
                 <InputError :message="form.errors.message" class="mt-2" />
                 <PrimaryButton class="mt-4">Submit</PrimaryButton>
             </form>
+
+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+                <Manufacturer
+                    v-for="manufacturer in manufacturers"
+                    :key="manufacturer.id"
+                    :manufacturer="manufacturer"
+                />
+            </div>
+
         </div>
     </AuthenticatedLayout>
 </template>
