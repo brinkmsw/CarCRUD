@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Manufacturer;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Models\Manufacturer;
-use Illuminate\Http\Request;
 
 class ManufacturerController extends Controller
 {
+    public function cars(): HasMany
+    {
+        return $this->hasMany(Car::class);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -29,11 +36,16 @@ class ManufacturerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+        ]);
+ 
+        $request->user()->manufacturers()->create($validated);
+ 
+        return redirect(route('manufacturers.index'));
     }
-
     /**
      * Display the specified resource.
      */

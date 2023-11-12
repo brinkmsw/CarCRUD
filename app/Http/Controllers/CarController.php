@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,9 +32,17 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'model' => 'required|string|max:100',
+            'year' => 'required|int',
+            'manufacturer' => 'required',
+        ]);
+ 
+        $request->user()->manufacturers()->create($validated);
+ 
+        return redirect(route('manufacturers.index'));
     }
 
     /**
