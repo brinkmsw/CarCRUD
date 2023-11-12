@@ -19,7 +19,7 @@ class CarController extends Controller
     {
         return Inertia::render('Cars/Index', [
 
-            'cars' => Car::with('user:id,name')->latest()->get(),
+            'cars' => Car::latest()->get(),
         ]);
     }
 

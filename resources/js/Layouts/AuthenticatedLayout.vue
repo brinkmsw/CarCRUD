@@ -137,7 +137,7 @@ const showingNavigationDropdown = ref(false);
                             <ResponsiveNavLink :href="route('logout')" method="post" as="button">
                                 Log Out
                             </ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('cars.index')" :active="route().current('manufacturers.index')">
+                            <ResponsiveNavLink :href="route('cars.index')" :active="route().current('cars.index')">
                                 Cars
                             </ResponsiveNavLink>
                             <ResponsiveNavLink :href="route('manufacturers.index')" :active="route().current('manufacturers.index')">

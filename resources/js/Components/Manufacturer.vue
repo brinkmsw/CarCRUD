@@ -1,5 +1,5 @@
 <script setup>
-defineProps(['chirp']);
+defineProps(['manufacturer']);
 </script>
  
 <template>
