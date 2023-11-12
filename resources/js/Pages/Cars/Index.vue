@@ -6,7 +6,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm, Head } from '@inertiajs/vue3';
  
 
-// defineProps(['cars']);
+defineProps(['cars']);
 
 const form = useForm({
     message: '',
@@ -28,13 +28,13 @@ const form = useForm({
                 <PrimaryButton class="mt-4">Submit</PrimaryButton>
             </form>
 
-            <!-- <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
                 <Car
                     v-for="car in cars"
                     :key="car.id"
-
+                    :car="car"
                 />
-            </div> -->
+            </div>
 
         </div>
     </AuthenticatedLayout>
