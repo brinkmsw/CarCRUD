@@ -22,6 +22,7 @@ class ManufacturerController extends Controller
     public function index(): Response 
     {
         return Inertia::render('Manufacturers/Index', [
+            'manufacturers' => Manufacturer::with('user:id,name')->latest()->get(),
         ]);
     }
 
