@@ -78,6 +78,8 @@ class ManufacturerController extends Controller
      */
     public function destroy(Manufacturer $manufacturer)
     {
-        //
+        $manufacturer->delete();
+ 
+        return redirect(route('manufacturer.index'));
     }
 }
