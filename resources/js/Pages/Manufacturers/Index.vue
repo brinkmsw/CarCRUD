@@ -9,22 +9,23 @@ defineProps(['manufacturers']);
 
 
 const form = useForm({
-    message: '',
+    name: '',
 });
 </script>
  
 <template>
     <Head title="Manufacturers" />
+    
  
     <AuthenticatedLayout>
         <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-            <form @submit.prevent="form.post(route('manufacturers.store'), { onSuccess: () => form.reset() })">
+            <form @submit="form.post(route('manufacturers.store'), { onSuccess: () => form.reset() })">
                 <textarea
-                    v-model="form.message"
-                    placeholder="Please input a manufacturer."
+                    v-model="form.name"
+                    placeholder="To add a manufacturer, input their name and click submit."
                     class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                 ></textarea>
-                <InputError :message="form.errors.message" class="mt-2" />
+                <InputError :name="form.errors.name" class="mt-2" />
                 <PrimaryButton class="mt-4">Submit</PrimaryButton>
             </form>
 

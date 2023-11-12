@@ -40,8 +40,10 @@ class ManufacturerController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:255',
         ]);
+
+        $request->user()->manufacturers()->create($validated);
  
         return redirect(route('manufacturers.index'));
     }
@@ -80,6 +82,6 @@ class ManufacturerController extends Controller
     {
         $manufacturer->delete();
  
-        return redirect(route('manufacturer.index'));
+        return redirect(route('manufacturers.index'));
     }
 }
