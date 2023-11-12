@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class CarController extends Controller
 {
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Manufacturer::class);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -42,9 +46,7 @@ class CarController extends Controller
             'manufacturer' => 'required',
         ]);
  
-        $request->user()->manufacturers()->create($validated);
- 
-        return redirect(route('manufacturers.index'));
+        return redirect(route('cars.index'));
     }
 
     /**

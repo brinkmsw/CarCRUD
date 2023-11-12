@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Manufacturer;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ManufacturerController extends Controller
 {
@@ -42,8 +42,6 @@ class ManufacturerController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
         ]);
- 
-        $request->user()->manufacturers()->create($validated);
  
         return redirect(route('manufacturers.index'));
     }

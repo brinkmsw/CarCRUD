@@ -10,8 +10,8 @@ defineProps(['car']);
         <div class="flex-1">
             <div class="flex justify-between items-center">
                 <div>
-                    <span class="text-gray-800">{{ chirp.model }}</span>
-                    <small class="ml-2 text-sm text-gray-600">{{ new Date(chirp.created_at).toLocaleString() }}</small>
+                    <span class="text-gray-800">{{ car.model }}</span>
+                    <small class="ml-2 text-sm text-gray-600">{{ new Date(car.created_at).toLocaleString() }}</small>
                 </div>
             </div>
             <p class="mt-4 text-lg text-gray-900"></p>

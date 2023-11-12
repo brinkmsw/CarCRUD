@@ -10,11 +10,11 @@ defineProps(['manufacturer']);
         <div class="flex-1">
             <div class="flex justify-between items-center">
                 <div>
-                    <span class="text-gray-800">{{ chirp.user.name }}</span>
-                    <small class="ml-2 text-sm text-gray-600">{{ new Date(chirp.created_at).toLocaleString() }}</small>
+                    <span class="text-gray-800">{{ manufacturer.name }}</span>
+                    <small class="ml-2 text-sm text-gray-600">{{ new Date(manufacturer.created_at).toLocaleString() }}</small>
                 </div>
             </div>
-            <p class="mt-4 text-lg text-gray-900">{{ chirp.message }}</p>
+            <p class="mt-4 text-lg text-gray-900"></p>
         </div>
     </div>
 </template>
