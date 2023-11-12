@@ -66,7 +66,11 @@ class ManufacturerController extends Controller
      */
     public function update(Request $request, Manufacturer $manufacturer)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+        ]);
+ 
+        return redirect(route('manufacturers.index'));
     }
 
     /**

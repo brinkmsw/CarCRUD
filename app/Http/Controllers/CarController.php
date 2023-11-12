@@ -70,7 +70,13 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        //
+        $validated = $request->validate([
+            'model' => 'required|string|max:100',
+            'year' => 'required|int',
+            'manufacturer' => 'required',
+        ]);
+
+        return redirect(route('cars.index'));
     }
 
     /**
