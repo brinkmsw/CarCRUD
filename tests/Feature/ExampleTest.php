@@ -16,4 +16,20 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_not_found(): void
+    {
+        $response = $this->get('/salesmen');
+
+        $response->assertNotFound();
+    }
+
+    public function test_found(): void
+    {
+        $response = $this->get('/cars');
+
+        $response->assertFound();
+    }
+
+    
 }
