@@ -16,6 +16,13 @@ class ManufacturerController extends Controller
         return $this->hasMany(Car::class);
     }
 
+    public function result($id)
+    {
+        $manufacturer = DB::table('manufacturers')->where('id', $id)->first();
+        
+        return($manufacturer);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -71,6 +78,10 @@ class ManufacturerController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
         ]);
+
+        $manufacturer->name = $validated;
+
+        $manufacturer->save();
  
         return redirect(route('manufacturers.index'));
     }

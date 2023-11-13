@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CarController extends Controller
 {
-    public function user(): BelongsTo
+    public function manufacturer(): BelongsTo
     {
         return $this->belongsTo(Manufacturer::class);
     }
@@ -23,7 +23,7 @@ class CarController extends Controller
     {
         return Inertia::render('Cars/Index', [
 
-            'cars' => Car::latest()->get(),
+            'cars' => Car::with('manufacturer')->latest()->get(),
         ]);
     }
 
@@ -43,7 +43,13 @@ class CarController extends Controller
         $validated = $request->validate([
             'model' => 'required|string|max:100',
             'year' => 'required|int',
-            'manufacturer' => 'required',
+            'manufacturer_id' => 'required',
+        ]);
+
+        $car = Car::create([
+            'manufacturer_id' => $request->input('manufacturer_id'),
+            'model' => $request->input('model'),
+            'year' => $request->input('year'),
         ]);
  
         return redirect(route('cars.index'));

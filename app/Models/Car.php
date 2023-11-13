@@ -16,8 +16,8 @@ class Car extends Model
         'manufacturer_id',
       ];
     
-    public function user(): BelongsTo
+    public function manufacturer(): BelongsTo
     {
-        return $this->belongsTo(Manufacturer::class);
+        return $this->belongsTo(\App\Models\Manufacturer::class);
     }
 }
